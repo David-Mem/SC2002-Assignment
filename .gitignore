@@ -19,6 +19,37 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# virtual machine crash logs
 hs_err_pid*
 replay_pid*
+
+# ADD THESE LINES:
+# Build directories
+bin/
+out/
+build/
+target/
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# Generated documentation
+docs/
+
+# Serialized data files (optional - include if you don't want to track these)
+data/*.dat
+```
+
+---
+
+### 2. **Create data/.gitkeep File**
+Git doesn't track empty directories. Add this file so the `data/` folder exists when someone clones your repo:
+
+**File: `data/.gitkeep`**
+```
+# This file ensures the data directory is tracked by Git
