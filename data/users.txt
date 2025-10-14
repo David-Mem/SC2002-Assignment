@@ -1,0 +1,11 @@
+U2345123F|John Tan|password|STUDENT|3|CSC
+U2345124G|Mary Lim|password|STUDENT|2|EEE
+U2345125H|David Wong|password|STUDENT|4|MAE
+U2345126J|Alice Chen|password|STUDENT|1|CSC
+U2345127K|Bob Lee|password|STUDENT|3|MAE
+U2345128L|Sarah Ng|password|STUDENT|2|CSC
+U2345129M|Tom Goh|password|STUDENT|4|EEE
+U2345130N|Emily Koh|password|STUDENT|1|MAE
+staff001|Admin User|password|CAREER_STAFF|Career Services
+staff002|Jane Smith|password|CAREER_STAFF|Student Affairs
+staff003|Michael Tan|password|CAREER_STAFF|Placement Office
