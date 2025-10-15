@@ -8,268 +8,467 @@ A command-line interface (CLI) application for managing internship placements fo
 - **Semester**: 2025/2026 Semester 1
 - **Group**: [Your Group Number]
 
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Java JDK 8 or higher
+- Terminal/Command Prompt
+
+### Run in 3 Steps
+
+**Windows:**
+```batch
+compile.bat
+run.bat
+```
+
+**Mac/Linux:**
+```bash
+chmod +x compile.sh run.sh
+./compile.sh
+./run.sh
+```
+
+**Default Login:**
+- Student: `U2345123F` / `password`
+- Staff: `staff001` / `password`
+
+---
+
 ## Features
 
 ### For Students
-- View available internship opportunities based on profile (year of study, major)
-- Apply for up to 3 internships simultaneously
-- View application status (Pending, Successful, Unsuccessful)
-- Accept internship placement (only one)
-- Request withdrawal of applications
+- ✅ View available internship opportunities based on profile (year of study, major)
+- ✅ Apply for up to 3 internships simultaneously
+- ✅ View application status (Pending, Successful, Unsuccessful)
+- ✅ Accept internship placement (only one)
+- ✅ Request withdrawal of applications (before/after confirmation)
+- ✅ Change password
 
 ### For Company Representatives
-- Register and await approval from Career Center Staff
-- Create up to 5 internship opportunities
-- View and manage created internships
-- Toggle internship visibility
-- Review student applications
-- Approve/reject applications
+- ✅ Register and await approval from Career Center Staff
+- ✅ Create up to 5 internship opportunities
+- ✅ View and manage created internships
+- ✅ Edit/delete internships (before approval only)
+- ✅ Toggle internship visibility
+- ✅ Review student applications with full details
+- ✅ Approve/reject applications
+- ✅ Change password
 
 ### For Career Center Staff
-- Authorize company representative accounts
-- Approve/reject internship opportunities
-- Process student withdrawal requests
-- Generate comprehensive reports with filters
+- ✅ Authorize company representative accounts
+- ✅ Approve/reject internship opportunities
+- ✅ Process student withdrawal requests (before/after placement)
+- ✅ Generate comprehensive reports with filters
+- ✅ View all internships in the system
+- ✅ Change password
+
+---
 
 ## System Requirements
-- Java Development Kit (JDK) 8 or higher
-- Java IDE (IntelliJ IDEA, Eclipse, or NetBeans) or text editor
-- Command line/terminal access
+- **Java**: JDK 8 or higher
+- **IDE** (optional): IntelliJ IDEA, Eclipse, NetBeans, or VS Code
+- **OS**: Windows, Mac, or Linux
+
+---
 
 ## Project Structure
 ```
-src/
-└── edu/ntu/ccds/sc2002/
-    ├── Main.java                          # Application entry point
-    ├── entity/                            # Entity classes
-    │   ├── User.java                      # Abstract base user class
-    │   ├── UserRole.java                  # User role enumeration
-    │   ├── Student.java                   # Student entity
-    │   ├── CompanyRepresentative.java     # Company rep entity
-    │   ├── CareerCenterStaff.java         # Career staff entity
-    │   ├── Internship.java                # Internship entity
-    │   ├── InternshipLevel.java           # Internship level enum
-    │   ├── InternshipStatus.java          # Internship status enum
-    │   ├── Application.java               # Application entity
-    │   ├── ApplicationStatus.java         # Application status enum
-    │   └── WithdrawalRequest.java         # Withdrawal request entity
-    ├── control/                           # Controller classes
-    │   ├── AuthenticationController.java  # Authentication logic
-    │   └── DataController.java            # Data management (Singleton)
-    └── boundary/                          # Boundary/UI classes
-        ├── LoginUI.java                   # Login interface
-        ├── StudentUI.java                 # Student interface
-        ├── CompanyRepUI.java              # Company rep interface
-        └── CareerStaffUI.java             # Career staff interface
-
-data/
-├── users.txt                              # User data file
-├── internships.dat                        # Serialized internships
-├── applications.dat                       # Serialized applications
-└── withdrawals.dat                        # Serialized withdrawals
+InternshipSystem/
+├── src/
+│   └── edu/ntu/ccds/sc2002/
+│       ├── Main.java                          # Application entry point
+│       ├── entity/                            # Entity classes (Model)
+│       │   ├── User.java                      # Abstract base user class
+│       │   ├── UserRole.java                  # User role enumeration
+│       │   ├── Student.java                   # Student entity
+│       │   ├── CompanyRepresentative.java     # Company rep entity
+│       │   ├── CareerCenterStaff.java         # Career staff entity
+│       │   ├── Internship.java                # Internship entity
+│       │   ├── InternshipLevel.java           # Internship level enum
+│       │   ├── InternshipStatus.java          # Internship status enum
+│       │   ├── Application.java               # Application entity
+│       │   ├── ApplicationStatus.java         # Application status enum
+│       │   ├── WithdrawalRequest.java         # Withdrawal request entity
+│       │   └── WithdrawalStatus.java          # Withdrawal status enum
+│       ├── control/                           # Controller classes
+│       │   ├── AuthenticationController.java  # Authentication logic
+│       │   └── DataController.java            # Data management (Singleton)
+│       └── boundary/                          # Boundary/UI classes (View)
+│           ├── LoginUI.java                   # Login interface
+│           ├── StudentUI.java                 # Student interface
+│           ├── CompanyRepUI.java              # Company rep interface
+│           └── CareerStaffUI.java             # Career staff interface
+│
+├── data/
+│   ├── users.txt                              # Initial user data
+│   ├── .gitkeep                               # Ensures directory is tracked
+│   └── *.dat                                  # Serialized data (generated)
+│
+├── scripts/
+│   └── setup.sh                               # Setup script
+│
+├── compile.sh / compile.bat                   # Compilation scripts
+├── run.sh / run.bat                           # Execution scripts
+├── .gitignore                                 # Git ignore rules
+├── .gitattributes                             # Line ending configuration
+│
+├── README.md                                  # This file
+├── QUICK_START_GUIDE.md                       # 5-minute setup guide
+├── DESIGN_CONSIDERATIONS.md                   # Design documentation
+├── TESTING_GUIDE.md                           # Test cases and guide
+└── (other documentation files)
 ```
+
+---
 
 ## Setup Instructions
 
-### 1. Extract the Project
-Extract all files to your desired directory.
+### Method 1: Using Scripts (Recommended)
 
-### 2. Create Data Directory
-Create a `data` folder in your project root:
+**Windows:**
+```batch
+# Compile
+compile.bat
+
+# Run
+run.bat
+```
+
+**Mac/Linux:**
 ```bash
-mkdir data
+# Make scripts executable
+chmod +x compile.sh run.sh
+
+# Compile
+./compile.sh
+
+# Run
+./run.sh
 ```
 
-### 3. Create Sample Users File
-Create `data/users.txt` with the following content:
-```
-U2345123F|John Tan|password|STUDENT|3|CSC
-U2345124G|Mary Lim|password|STUDENT|2|EEE
-U2345125H|David Wong|password|STUDENT|4|MAE
-U2345126J|Alice Chen|password|STUDENT|1|CSC
-U2345127K|Bob Lee|password|STUDENT|3|MAE
-staff001|Admin User|password|CAREER_STAFF|Career Services
-staff002|Jane Smith|password|CAREER_STAFF|Student Affairs
-```
+---
 
-### 4. Compile the Project
+### Method 2: Manual Compilation
 
-#### Using Command Line:
+**Compile:**
 ```bash
-cd src
-javac edu/ntu/ccds/sc2002/*.java edu/ntu/ccds/sc2002/**/*.java
+# Create bin directory
+mkdir bin
+
+# Compile all source files
+javac -d bin -sourcepath src src/edu/ntu/ccds/sc2002/**/*.java
 ```
 
-#### Using IDE:
-1. Import the project into your IDE
-2. Set the source folder to `src`
-3. Build the project
-
-### 5. Run the Application
-
-#### Using Command Line:
+**Run:**
 ```bash
-java edu.ntu.ccds.sc2002.Main
+java -cp bin edu.ntu.ccds.sc2002.Main
 ```
 
-#### Using IDE:
-Run the `Main.java` file
+---
+
+### Method 3: Using IDE
+
+**IntelliJ IDEA:**
+1. File → Open → Select project folder
+2. Mark `src` as Sources Root (right-click → Mark Directory As → Sources Root)
+3. Right-click `Main.java` → Run 'Main.main()'
+
+**Eclipse:**
+1. File → Open Projects from File System
+2. Select project folder
+3. Right-click `Main.java` → Run As → Java Application
+
+**VS Code:**
+1. Open project folder
+2. Install Java Extension Pack
+3. Press F5 or click Run button
+
+---
 
 ## Default Login Credentials
 
 ### Students
-- **ID**: U2345123F, **Password**: password (Year 3, CSC)
-- **ID**: U2345124G, **Password**: password (Year 2, EEE)
-- **ID**: U2345125H, **Password**: password (Year 4, MAE)
+| User ID | Password | Year | Major |
+|---------|----------|------|-------|
+| U2345123F | password | 3 | CSC |
+| U2345124G | password | 2 | EEE |
+| U2345125H | password | 4 | MAE |
+| U2345126J | password | 1 | CSC |
+| U2345127K | password | 3 | MAE |
 
 ### Career Center Staff
-- **ID**: staff001, **Password**: password
-- **ID**: staff002, **Password**: password
+| User ID | Password | Department |
+|---------|----------|------------|
+| staff001 | password | Career Services |
+| staff002 | password | Student Affairs |
+| staff003 | password | Placement Office |
 
 ### Company Representatives
-Register through the system (requires staff approval)
+Register through the system (Option 2 from login menu). Requires staff approval before login.
+
+---
 
 ## Usage Guide
 
 ### First Time Setup
 1. Run the application
-2. Login as Career Center Staff (staff001/password)
-3. Register as Company Representative (Option 2 from login menu)
-4. As staff, authorize the company representative
-5. Login as the approved company representative
-6. Create internship opportunities
-7. As staff, approve the internship opportunities
-8. Login as student and apply for internships
+2. Login as Career Center Staff (`staff001` / `password`)
+3. Go back to main menu (Option 7)
+4. Register as Company Representative (Option 2)
+5. Login as staff again and authorize the company representative (Option 1)
+6. Login as the approved company representative
+7. Create internship opportunities (Option 1)
+8. Login as staff and approve internship opportunities (Option 2)
+9. Login as student and apply for internships
 
-### Sample User Journey
+---
+
+### Sample User Journeys
 
 #### Student Workflow:
-1. Login with student credentials
-2. View available internships (filtered by profile)
-3. Apply for internships (max 3)
-4. Wait for company rep approval
-5. Accept placement once approved
-6. Request withdrawal if needed
+1. ✅ Login with student credentials
+2. ✅ View available internships (automatically filtered by profile)
+3. ✅ Apply for internships (max 3 at a time)
+4. ✅ Wait for company rep approval
+5. ✅ Accept placement once approved (automatically withdraws other applications)
+6. ✅ Request withdrawal if needed (requires staff approval)
 
 #### Company Representative Workflow:
-1. Register account
-2. Wait for staff approval
-3. Login after approval
-4. Create internship opportunities
-5. Wait for staff approval of internships
-6. View and process student applications
-7. Toggle internship visibility as needed
+1. ✅ Register account via main menu
+2. ✅ Wait for staff approval
+3. ✅ Login after approval
+4. ✅ Create internship opportunities (max 5, requires staff approval)
+5. ✅ Wait for staff approval of internships
+6. ✅ View and process student applications
+7. ✅ Toggle internship visibility as needed
 
 #### Career Staff Workflow:
-1. Login with staff credentials
-2. Authorize company representatives
-3. Approve internship opportunities
-4. Process withdrawal requests
-5. Generate reports
+1. ✅ Login with staff credentials
+2. ✅ Authorize company representatives
+3. ✅ Approve internship opportunities
+4. ✅ Process withdrawal requests (before/after placement)
+5. ✅ Generate reports with various filters
+
+---
 
 ## OOP Concepts Implemented
 
 ### 1. Encapsulation
 - All entity classes have private attributes with public getters/setters
 - Data hiding and controlled access to internal state
+- Defensive copying to prevent external modification
 
 ### 2. Inheritance
 - `Student`, `CompanyRepresentative`, and `CareerCenterStaff` extend abstract `User` class
 - Code reuse and hierarchical classification
+- Natural "is-a" relationship modeling
 
 ### 3. Polymorphism
 - Abstract method `displayMenu()` overridden in each user subclass
 - Different implementations based on user type
+- Runtime type determination
 
 ### 4. Abstraction
 - Abstract `User` class defines common interface
 - Concrete implementations provide specific behavior
+- Hides complexity from callers
 
 ### 5. Design Patterns
 
 #### Singleton Pattern
 - `DataController` implements Singleton to ensure single data source
 - Global point of access to application data
+- Prevents data inconsistency
 
 #### MVC Pattern
 - **Model**: Entity classes (User, Internship, Application, etc.)
 - **View**: Boundary classes (LoginUI, StudentUI, etc.)
 - **Controller**: Control classes (AuthenticationController, DataController)
 
+#### Template Method Pattern
+- Abstract `displayMenu()` in User class
+- Each subclass implements their own version
+
+---
+
 ## Data Persistence
-- User data loaded from text file (`users.txt`)
-- Internships, applications, and withdrawals saved using Java serialization
-- Automatic save on application exit
-- Automatic load on application start
+
+### File-based Storage:
+- **users.txt**: Initial user data (text format)
+- **users.dat**: User data (serialized, generated after first run)
+- **internships.dat**: Serialized internship data
+- **applications.dat**: Serialized application data
+- **withdrawals.dat**: Serialized withdrawal request data
+
+### Automatic Operations:
+- ✅ Load on application start
+- ✅ Save on application exit
+- ✅ No manual save required
+
+### Data Location:
+All data files are in the `data/` directory.
+
+**To reset data**: Delete all `.dat` files and restart application.
+
+---
 
 ## Testing
 
-### Test Cases
-Refer to Appendix A in the assignment document for comprehensive test cases including:
-- Valid/invalid user login
-- Password change functionality
-- Company representative registration and approval
-- Internship creation and approval
-- Application eligibility and submission
-- Placement confirmation
-- Withdrawal requests
+### Test Coverage
+- **40+ comprehensive test cases** covering all functionality
+- Unit testing approach for individual components
+- Integration testing for complete workflows
+- Edge case handling and error scenarios
 
 ### Running Tests
-1. Follow the user journeys described above
-2. Verify each feature works as expected
-3. Test edge cases (e.g., maximum applications, filled internships)
-4. Test data persistence (restart application and verify data retained)
+Refer to [TESTING_GUIDE.md](TESTING_GUIDE.md) for:
+- Detailed test cases
+- Expected results
+- Test execution procedures
+- Demo script
 
-## Generating Javadoc
+---
 
-### Using Command Line:
+## Documentation
+
+### For Development:
+- **DESIGN_CONSIDERATIONS.md**: Detailed explanation of design choices, OOP principles, and patterns
+- **TESTING_GUIDE.md**: Comprehensive test cases and testing procedures
+- **QUICK_START_GUIDE.md**: 5-minute setup and first-time usage
+
+### Generated Documentation:
+Generate Javadoc API documentation:
+
 ```bash
+# Command line
 cd src
-javadoc -d ../docs -author -private -version edu.ntu.ccds.sc2002 edu.ntu.ccds.sc2002.entity edu.ntu.ccds.sc2002.control edu.ntu.ccds.sc2002.boundary
+javadoc -d ../docs -author -private -version \
+  edu.ntu.ccds.sc2002 \
+  edu.ntu.ccds.sc2002.entity \
+  edu.ntu.ccds.sc2002.control \
+  edu.ntu.ccds.sc2002.boundary
+
+# View documentation
+open ../docs/index.html
 ```
 
-### Using IDE:
-1. In IntelliJ: Tools → Generate JavaDoc
-2. In Eclipse: Project → Generate Javadoc
-3. Specify output directory as `docs`
+---
 
 ## Known Limitations
-- CLI-based interface (no GUI)
-- Single-threaded operation
-- File-based persistence (no database)
-- Limited error recovery for corrupted data files
+- ✅ CLI-based interface (no GUI)
+- ✅ Single-threaded operation (suitable for assignment scope)
+- ✅ File-based persistence (no database as per requirements)
+- ✅ No encryption for stored passwords (demonstration only)
+- ✅ Limited error recovery for corrupted data files
+
+---
 
 ## Future Enhancements
+
+### Easy Additions:
+- Email validation with proper regex
+- Password strength requirements
+- Search internships by keyword
+- Export reports to CSV
+- Sort internships by multiple criteria
+
+### Medium Additions:
+- Edit user profiles
+- Application deadline reminders
+- Internship ratings and reviews
+- Multiple majors per internship
+- Resume/CV upload support
+
+### Advanced Additions:
 - GUI implementation using JavaFX
 - Database integration (MySQL/PostgreSQL)
-- Email notifications for application status
-- Advanced search and filtering
-- Multi-language support
-- User profile pictures
-- Internship recommendations based on student profile
+- Email notifications via SMTP
+- Advanced analytics dashboard
+- Recommendation system based on student profile
+- Real-time notifications
+
+---
 
 ## Troubleshooting
 
 ### "File not found" error
-- Ensure `data` directory exists
-- Check that `users.txt` is in the correct location
+**Solution**: Ensure `data` directory exists and contains `users.txt`
 
-### "Cannot load data" warning
-- Normal on first run (creates empty data structures)
-- If persistent, check file permissions
+### "Cannot load data" warning on first run
+**Solution**: Normal behavior - system creates empty data structures
 
 ### Serialization errors
-- Delete `.dat` files in `data/` folder to reset
-- Restart application
+**Solution**: 
+1. Delete all `.dat` files in `data/` folder
+2. Restart application
 
-## Support
-For issues or questions, contact:
-- Course Instructor: Dr. Li Fang
-- Teaching Assistant: [Your TA's name]
+### Compilation errors
+**Solution**:
+1. Verify Java version: `java -version` (should be 8+)
+2. Check file structure matches documentation
+3. Ensure no typos in package names
+
+### Login fails for new company rep
+**Solution**: Ensure staff has approved the account via "Authorize Company Representatives"
+
+### Cannot see internships as student
+**Solution**: 
+1. Check visibility is ON
+2. Check status is APPROVED
+3. Check eligibility (major, year, level)
+
+---
+
+## Development Team
+
+**Group Members**: [Fill in your team members]
+
+**Contributions**: Refer to WBS (Work Breakdown Structure) if included in submission
+
+---
+
+## Support Resources
+
+### Official Resources:
+- Course materials and lecture notes on NTULearn
+- Assignment specification document
+- Lab sessions and TA office hours
+
+### External Resources:
+- [Java Documentation](https://docs.oracle.com/javase/8/docs/api/)
+- [Visual Paradigm](https://www.visual-paradigm.com/) for UML diagrams
+- [Git Documentation](https://git-scm.com/doc)
+
+---
 
 ## License
 This project is created for educational purposes as part of SC2002 coursework.
 
 ---
 
-**Note**: Remember to test all functionalities thoroughly before your demonstration!
+## Acknowledgments
+- Course Instructor: Dr. Li Fang
+- Teaching Assistants
+- All team members for their contributions
+
+---
+
+**📝 Note**: Remember to test all functionalities thoroughly before your demonstration! Follow the test cases in TESTING_GUIDE.md.
+
+**🎯 For Assignment Submission**: Ensure all required deliverables are included:
+- ✅ Source code with Javadoc
+- ✅ UML Class Diagram (with OOP annotations)
+- ✅ UML Sequence Diagram (Company Rep workflow)
+- ✅ Report (max 12 pages)
+- ✅ Declaration of Original Work (signed)
+- ✅ Demo video (max 15 minutes)
+- ✅ GitHub repository link
+
+---
+
+**Last Updated**: October 2025  
+**Version**: 1.0  
+**Status**: Complete and Ready for Submission ✅

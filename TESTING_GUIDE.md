@@ -1,22 +1,22 @@
 # Testing Guide
 
 ## Overview
-This document provides comprehensive testing instructions for the Internship Placement Management System, covering all test cases mentioned in the assignment.
+This document provides comprehensive testing instructions for the Internship Placement Management System, covering all functionality and edge cases.
 
 ## Pre-requisites
 1. Application compiled successfully
-2. Sample data loaded (users.txt)
-3. Clean data directory (delete .dat files for fresh start if needed)
+2. Sample data loaded (`data/users.txt`)
+3. Clean data directory (delete `.dat` files for fresh start if needed)
 
 ## Test Case Structure
 
-### Test Case Format
+Each test case includes:
 - **Test ID**: Unique identifier
 - **Description**: What is being tested
 - **Pre-conditions**: Setup required
 - **Steps**: Detailed execution steps
 - **Expected Result**: What should happen
-- **Actual Result**: What actually happened (to be filled during testing)
+- **Actual Result**: To be filled during testing
 - **Status**: PASS/FAIL
 
 ---
@@ -57,15 +57,18 @@ This document provides comprehensive testing instructions for the Internship Pla
 
 **Setup**:
 1. Login as staff (staff001/password)
-2. Register company rep via option 2 on login screen
+2. Select "3. Exit" to go back to main menu
+3. Select "2. Register as Company Representative"
    - Email: tech@company.com
    - Name: Tech Manager
    - Password: password
    - Company: Tech Corp
    - Department: HR
    - Position: Manager
-3. As staff, authorize the account (option 1)
-4. Logout
+4. Login as staff again
+5. Select "1. Authorize Company Representatives"
+6. Approve the account
+7. Logout
 
 **Steps**:
 1. Select "1. Login"
@@ -74,7 +77,7 @@ This document provides comprehensive testing instructions for the Internship Pla
 
 **Expected Result**:
 - Login successful
-- Company Representative menu displayed
+- Company Representative menu displayed with 9 options
 
 ---
 
@@ -122,7 +125,7 @@ This document provides comprehensive testing instructions for the Internship Pla
 3. Enter Password: `wrongpassword`
 
 **Expected Result**:
-- Login failed message
+- Login failed message: "Login failed. Invalid credentials or account not approved."
 - Return to login menu
 - Account not locked (can retry)
 
@@ -140,13 +143,15 @@ This document provides comprehensive testing instructions for the Internship Pla
 2. Enter current password: `password`
 3. Enter new password: `newpass123`
 4. Confirm new password: `newpass123`
-5. Logout
+5. Select "7. Logout"
 6. Login with User ID: `U2345123F` and Password: `newpass123`
 
 **Expected Result**:
 - Password change successful message
 - Can logout and login with new password
 - Cannot login with old password
+
+**Cleanup**: Change password back to `password` for other tests
 
 ---
 
@@ -169,6 +174,7 @@ This document provides comprehensive testing instructions for the Internship Pla
 **Expected Result**:
 - Registration successful message
 - Message: "Your account is pending approval from Career Center Staff"
+- Message: "You will be able to login once approved"
 - Cannot login until approved
 
 ---
@@ -184,13 +190,16 @@ This document provides comprehensive testing instructions for the Internship Pla
 **Steps**:
 1. Login as staff001/password
 2. Select "1. Authorize Company Representatives"
-3. View pending account details
-4. Select account number
+3. View pending account details (should show hr@techcorp.com)
+4. Enter account number: `1`
 5. Choose "1. Approve"
+6. Logout
 
 **Expected Result**:
 - Account approved message
 - Company rep can now login
+
+**Verify**: Try logging in as hr@techcorp.com/password - should succeed
 
 ---
 
@@ -199,12 +208,12 @@ This document provides comprehensive testing instructions for the Internship Pla
 **Description**: Verify company rep can create internship
 
 **Pre-conditions**:
-- Logged in as approved company rep
+- Logged in as approved company rep (hr@techcorp.com or tech@company.com)
 
 **Steps**:
 1. Select "1. Create Internship Opportunity"
 2. Enter title: `Software Development Intern`
-3. Enter description: `Work on web applications`
+3. Enter description: `Work on web applications using React and Node.js`
 4. Select level: `1` (Basic)
 5. Enter major: `CSC`
 6. Enter opening date: `2025-11-01`
@@ -215,7 +224,7 @@ This document provides comprehensive testing instructions for the Internship Pla
 - Internship created successfully
 - Internship ID generated (e.g., INT0001)
 - Status: PENDING
-- Message about awaiting approval
+- Message: "Status: PENDING (awaiting Career Center Staff approval)"
 
 ---
 
@@ -231,13 +240,12 @@ This document provides comprehensive testing instructions for the Internship Pla
 1. Login as staff001/password
 2. Select "2. Approve/Reject Internship Opportunities"
 3. View pending internship details
-4. Select internship number
+4. Enter internship number: `1`
 5. Choose "1. Approve"
 
 **Expected Result**:
-- Internship approved successfully
+- "Internship approved! Now visible to eligible students."
 - Status changes to APPROVED
-- Message: "Now visible to eligible students"
 
 ---
 
@@ -249,18 +257,19 @@ This document provides comprehensive testing instructions for the Internship Pla
 - Multiple internships created with different requirements
 - Logged in as Year 3 CSC student (U2345123F)
 
-**Test Data**:
+**Test Data Setup** (create these as company rep and get them approved):
 - Internship A: CSC, Basic, Visible=ON, Approved
 - Internship B: EEE, Basic, Visible=ON, Approved
 - Internship C: CSC, Advanced, Visible=ON, Approved
 
 **Steps**:
-1. Select "1. View Available Internships"
+1. Login as U2345123F/password (Year 3, CSC)
+2. Select "1. View Available Internships"
 
 **Expected Result**:
-- Student sees Internship A (CSC, any level allowed for Year 3)
-- Student sees Internship C (CSC, Year 3 can apply for Advanced)
-- Student does NOT see Internship B (wrong major)
+- Student sees Internship A (CSC, Basic - eligible)
+- Student sees Internship C (CSC, Advanced - Year 3 can apply)
+- Student does NOT see Internship B (EEE - wrong major)
 
 ---
 
@@ -270,16 +279,18 @@ This document provides comprehensive testing instructions for the Internship Pla
 
 **Pre-conditions**:
 - Logged in as Year 2 student (U2345124G, EEE)
+- Internships from TC011 exist
 
-**Test Data**:
+**Test Data Setup** (create these):
 - Internship D: EEE, Basic, Visible=ON, Approved
 - Internship E: EEE, Intermediate, Visible=ON, Approved
 
 **Steps**:
-1. Select "1. View Available Internships"
+1. Login as U2345124G/password (Year 2, EEE)
+2. Select "1. View Available Internships"
 
 **Expected Result**:
-- Student sees Internship D (Basic)
+- Student sees Internship D (EEE, Basic - eligible)
 - Student does NOT see Internship E (Intermediate not allowed for Year 2)
 
 ---
@@ -289,19 +300,20 @@ This document provides comprehensive testing instructions for the Internship Pla
 **Description**: Verify student can apply for eligible internship
 
 **Pre-conditions**:
-- Logged in as student
-- Eligible internship available
+- Logged in as student (U2345123F)
+- Eligible approved internship available
 - Student has < 3 applications
 
 **Steps**:
-1. Note an internship ID from "View Available Internships"
-2. Select "2. Apply for Internship"
-3. Enter the internship ID
+1. Select "1. View Available Internships"
+2. Note an internship ID (e.g., INT0001)
+3. Select "2. Apply for Internship"
+4. Enter internship ID: `INT0001`
 
 **Expected Result**:
-- Application submitted successfully
-- Application ID generated
-- Message showing application ID
+- "Application submitted successfully!"
+- Application ID generated (e.g., APP0001)
+- Message showing "Application ID: APP0001"
 
 ---
 
@@ -312,12 +324,17 @@ This document provides comprehensive testing instructions for the Internship Pla
 **Pre-conditions**:
 - Student has already applied for 3 internships
 
+**Setup**:
+1. Create 3 different internships
+2. Apply for all 3 (repeat TC013 three times)
+
 **Steps**:
-1. Select "2. Apply for Internship"
-2. Enter valid internship ID
+1. Try to apply for a 4th internship
+2. Select "2. Apply for Internship"
+3. Enter valid internship ID
 
 **Expected Result**:
-- Error message: "You have reached the maximum of 3 applications"
+- Error message: "You have reached the maximum of 3 applications."
 - No new application created
 
 ---
@@ -327,15 +344,16 @@ This document provides comprehensive testing instructions for the Internship Pla
 **Description**: Verify student cannot apply for ineligible internship
 
 **Pre-conditions**:
-- Year 2 student logged in
+- Year 2 student logged in (U2345124G)
 - Intermediate level internship available
 
 **Steps**:
-1. Select "2. Apply for Internship"
-2. Enter ID of Intermediate level internship
+1. Login as U2345124G/password (Year 2, EEE)
+2. Select "2. Apply for Internship"
+3. Enter ID of Intermediate level EEE internship (e.g., INT0005)
 
 **Expected Result**:
-- Error message: "You are not eligible for this internship"
+- Error message: "You are not eligible for this internship."
 - No application created
 
 ---
@@ -345,15 +363,20 @@ This document provides comprehensive testing instructions for the Internship Pla
 **Description**: Verify student can view their applications
 
 **Pre-conditions**:
-- Student has submitted applications
+- Student has submitted applications (from TC013)
 
 **Steps**:
-1. Select "3. View My Applications"
+1. Login as student who has applications
+2. Select "3. View My Applications"
 
 **Expected Result**:
 - List of all applications shown
-- Shows: Application ID, Internship Title, Company, Status, Date
-- Shows both pending and processed applications
+- Each application shows:
+  - Application ID
+  - Internship Title
+  - Company Name
+  - Status (PENDING)
+  - Application Date
 
 ---
 
@@ -362,16 +385,21 @@ This document provides comprehensive testing instructions for the Internship Pla
 **Description**: Verify student can see applications even when visibility is off
 
 **Pre-conditions**:
-- Student applied for internship
-- Company rep turns visibility OFF
+- Student applied for internship (from TC013)
 
 **Steps**:
-1. As company rep: Toggle visibility OFF for internship
-2. As student: Select "3. View My Applications"
+1. Login as company rep who created the internship
+2. Select "7. Toggle Internship Visibility"
+3. Enter internship ID
+4. Confirm visibility toggled to OFF
+5. Logout
+6. Login as student
+7. Select "3. View My Applications"
 
 **Expected Result**:
 - Application still visible to student
 - All details accessible
+- Can still see internship title and company
 
 ---
 
@@ -380,20 +408,21 @@ This document provides comprehensive testing instructions for the Internship Pla
 **Description**: Verify company rep can approve applications
 
 **Pre-conditions**:
-- Student application received
+- Student application received (from TC013)
 - Logged in as company rep
 
 **Steps**:
-1. Select "5. View Applications"
-2. Enter internship ID
-3. Note student details
-4. Select "6. Process Application"
-5. Enter application ID
-6. Choose "1. Approve"
+1. Login as company rep
+2. Select "5. View Applications"
+3. Enter internship ID (e.g., INT0001)
+4. View student details
+5. Select "6. Process Application (Approve/Reject)"
+6. Enter application ID (e.g., APP0001)
+7. Choose "1. Approve"
 
 **Expected Result**:
+- "Application approved successfully!"
 - Application status changes to SUCCESSFUL
-- Message: "Application approved successfully"
 
 ---
 
@@ -402,20 +431,20 @@ This document provides comprehensive testing instructions for the Internship Pla
 **Description**: Verify student can accept successful placement
 
 **Pre-conditions**:
-- Student has successful application
+- Student has successful application (from TC018)
 - No confirmed placement yet
 
 **Steps**:
 1. Login as student
 2. Select "4. Accept Internship Placement"
 3. View successful applications
-4. Enter number to accept
+4. Enter application number to accept: `1`
 
 **Expected Result**:
-- Placement confirmed
-- Message: "All other applications have been withdrawn"
+- "Internship placement confirmed successfully!"
+- "All other applications have been withdrawn."
 - Other applications status = WITHDRAWN
-- Available slots decremented
+- Available slots decremented in internship
 
 ---
 
@@ -424,13 +453,14 @@ This document provides comprehensive testing instructions for the Internship Pla
 **Description**: Verify student can only accept one placement
 
 **Pre-conditions**:
-- Student has confirmed a placement
+- Student has confirmed a placement (from TC019)
 
 **Steps**:
-1. Select "4. Accept Internship Placement"
+1. Login as student with confirmed placement
+2. Select "4. Accept Internship Placement"
 
 **Expected Result**:
-- Message: "You have already confirmed an internship placement"
+- Message: "You have already confirmed an internship placement."
 - Cannot accept another
 
 ---
@@ -444,13 +474,15 @@ This document provides comprehensive testing instructions for the Internship Pla
 - No placement confirmed yet
 
 **Steps**:
-1. Select "5. Request Withdrawal"
-2. Select application number
-3. Enter reason: `Found better opportunity`
+1. Login as student
+2. Select "5. Request Withdrawal"
+3. View active applications
+4. Select application number: `1`
+5. Enter reason: `Found better opportunity`
 
 **Expected Result**:
-- Withdrawal request created
-- Request ID generated
+- "Withdrawal request submitted successfully!"
+- Request ID generated (e.g., WDR0001)
 - Message: "Pending approval from Career Center Staff"
 
 ---
@@ -460,12 +492,13 @@ This document provides comprehensive testing instructions for the Internship Pla
 **Description**: Verify student can request withdrawal after confirmation
 
 **Pre-conditions**:
-- Student has confirmed placement
+- Student has confirmed placement (from TC019)
 
 **Steps**:
-1. Select "5. Request Withdrawal"
-2. Select confirmed application
-3. Enter reason: `Personal circumstances`
+1. Login as student with confirmed placement
+2. Select "5. Request Withdrawal"
+3. Select confirmed application
+4. Enter reason: `Personal circumstances changed`
 
 **Expected Result**:
 - Withdrawal request created
@@ -479,20 +512,21 @@ This document provides comprehensive testing instructions for the Internship Pla
 **Description**: Verify staff can approve withdrawal
 
 **Pre-conditions**:
-- Withdrawal request pending
+- Withdrawal request pending (from TC021 or TC022)
 - Logged in as staff
 
 **Steps**:
-1. Select "3. Process Withdrawal Requests"
-2. View request details
-3. Select request number
-4. Choose "1. Approve"
+1. Login as staff001/password
+2. Select "3. Process Withdrawal Requests"
+3. View request details
+4. Enter request number: `1`
+5. Choose "1. Approve"
 
 **Expected Result**:
-- Request approved
+- "Withdrawal request approved!"
 - Application status = WITHDRAWN
-- If after confirmation, slot freed up
-- Student can apply again
+- If after confirmation: slot freed up, student can apply again
+- Student's confirmedInternshipId cleared
 
 ---
 
@@ -501,17 +535,20 @@ This document provides comprehensive testing instructions for the Internship Pla
 **Description**: Verify internship status changes to FILLED when all slots taken
 
 **Pre-conditions**:
-- Internship with 2 slots
-- 2 students applied and approved
+- Internship with 2 slots created and approved
 
 **Steps**:
-1. Both students accept placement
-2. Check internship status
+1. Create internship with 2 slots
+2. Have 2 students apply
+3. Approve both applications
+4. Both students accept placement
+5. Check internship status
 
 **Expected Result**:
 - Status changes to FILLED
 - Available slots = 0
 - No new applications allowed
+- Visibility doesn't matter - still can't apply
 
 ---
 
@@ -524,14 +561,19 @@ This document provides comprehensive testing instructions for the Internship Pla
 - Currently visible
 
 **Steps**:
-1. Select "7. Toggle Internship Visibility"
-2. Enter internship ID
+1. Login as company rep
+2. Select "7. Toggle Internship Visibility"
+3. Enter internship ID
 
 **Expected Result**:
-- Visibility toggled to OFF
-- Message confirms change
-- Students cannot see internship in available list
-- Students with existing applications can still view
+- "Visibility toggled to: OFF" message
+- Students cannot see internship in available list (verify by logging in as student)
+- Students with existing applications can still view their applications
+
+**Verify**:
+1. Toggle back to ON
+2. Message: "Visibility toggled to: ON"
+3. Students can now see it again
 
 ---
 
@@ -544,13 +586,15 @@ This document provides comprehensive testing instructions for the Internship Pla
 - Logged in as staff
 
 **Steps**:
-1. Select "4. Generate Reports"
-2. Choose "1. All Internships Report"
+1. Login as staff
+2. Select "4. Generate Reports"
+3. Choose "1. All Internships Report"
 
 **Expected Result**:
 - Lists all internships
-- Shows: ID, Title, Company, Level, Major, Status, Slots, Applications
-- Sorted alphabetically
+- Shows: ID, Title, Company, Level, Major, Status, Visibility, Slots, Applications, Confirmed
+- Sorted alphabetically by title
+- Total count displayed
 
 ---
 
@@ -559,13 +603,15 @@ This document provides comprehensive testing instructions for the Internship Pla
 **Description**: Verify report filtering by status works
 
 **Steps**:
-1. Select "4. Generate Reports"
-2. Choose "2. Filter by Status"
-3. Select status (e.g., APPROVED)
+1. Login as staff
+2. Select "4. Generate Reports"
+3. Choose "2. Filter by Status"
+4. Select status: `2` (APPROVED)
 
 **Expected Result**:
-- Only internships with selected status shown
-- Count displayed
+- Only internships with APPROVED status shown
+- Accurate count displayed
+- Sorted alphabetically
 
 ---
 
@@ -574,13 +620,15 @@ This document provides comprehensive testing instructions for the Internship Pla
 **Description**: Verify report filtering by major works
 
 **Steps**:
-1. Select "4. Generate Reports"
-2. Choose "3. Filter by Major"
-3. Enter major: `CSC`
+1. Login as staff
+2. Select "4. Generate Reports"
+3. Choose "3. Filter by Major"
+4. Enter major: `CSC`
 
 **Expected Result**:
 - Only CSC internships shown
 - Accurate count
+- All details displayed
 
 ---
 
@@ -590,15 +638,18 @@ This document provides comprehensive testing instructions for the Internship Pla
 
 **Pre-conditions**:
 - Internship created but not approved (PENDING)
+- Logged in as company rep
 
 **Steps**:
 1. Select "3. Edit Internship Opportunity"
 2. Enter internship ID
-3. Update title and description
+3. Enter new title: `Updated Software Intern Title`
+4. Enter new description: `Updated description text`
 
 **Expected Result**:
-- Changes saved successfully
-- Can view updated details
+- "Internship updated successfully!"
+- Changes saved
+- Can view updated details in "View My Internships"
 
 ---
 
@@ -607,15 +658,17 @@ This document provides comprehensive testing instructions for the Internship Pla
 **Description**: Verify cannot edit after approval
 
 **Pre-conditions**:
-- Internship approved
+- Internship approved by staff
 
 **Steps**:
-1. Select "3. Edit Internship Opportunity"
-2. Enter internship ID
+1. Login as company rep
+2. Select "3. Edit Internship Opportunity"
+3. Enter ID of approved internship
 
 **Expected Result**:
-- Error message: "Cannot edit internship after it has been approved"
+- Error message: "Cannot edit internship after it has been approved."
 - No changes allowed
+- Internship remains unchanged
 
 ---
 
@@ -627,69 +680,198 @@ This document provides comprehensive testing instructions for the Internship Pla
 - Internship created but not approved
 
 **Steps**:
-1. Select "4. Delete Internship Opportunity"
-2. Enter internship ID
-3. Confirm: `yes`
+1. Login as company rep
+2. Select "4. Delete Internship Opportunity"
+3. Enter internship ID
+4. Confirm: `yes`
 
 **Expected Result**:
-- Internship deleted
+- "Internship deleted successfully!"
 - Removed from system
-- Cannot view anymore
+- Cannot view in "View My Internships"
+- Not visible to students
 
 ---
 
-### TC032: Data Persistence Test
+### TC032: Delete Internship - After Approval (Negative Test)
+
+**Description**: Verify cannot delete after approval
+
+**Pre-conditions**:
+- Internship approved by staff
+
+**Steps**:
+1. Login as company rep
+2. Select "4. Delete Internship Opportunity"
+3. Enter ID of approved internship
+
+**Expected Result**:
+- Error message: "Cannot delete internship after it has been approved."
+- Internship remains in system
+
+---
+
+### TC033: Data Persistence Test
 
 **Description**: Verify data saves and loads correctly
 
 **Steps**:
-1. Create internship, apply for it
-2. Exit application (option 3 from login)
-3. Restart application
-4. Login and check data
+1. Create internship, apply for it, approve application
+2. Select "3. Exit" from main menu
+3. Verify message: "Data saved successfully. Goodbye!"
+4. Restart application
+5. Login and check data
 
 **Expected Result**:
-- All data preserved
-- Internship still exists
-- Application still exists
+- All data preserved after restart
+- Internship still exists with same ID
+- Application still exists with same status
+- User data unchanged
 - No data loss
 
 ---
 
-## Test Execution Checklist
+### TC034: Company Rep Login Before Approval (Negative Test)
 
-### Before Testing
-- [ ] Clean installation
-- [ ] Data directory created
-- [ ] Sample users loaded
-- [ ] No existing .dat files (fresh start)
+**Description**: Verify company rep cannot login before approval
 
-### During Testing
-- [ ] Document actual results
-- [ ] Take screenshots of key screens
-- [ ] Note any unexpected behavior
-- [ ] Record error messages exactly
+**Pre-conditions**:
+- Company rep registered but NOT approved
 
-### After Testing
-- [ ] Calculate pass/fail rate
-- [ ] Document all failures
-- [ ] Identify patterns in failures
-- [ ] Plan fixes for failed tests
+**Steps**:
+1. Register new company rep
+2. Do NOT approve as staff
+3. Try to login with company rep credentials
 
-## Test Report Template
+**Expected Result**:
+- Login fails
+- Message: "Your account is pending approval from Career Center Staff."
+- Returns to login menu
+
+---
+
+### TC035: Apply After Closing Date (Negative Test)
+
+**Description**: Verify cannot apply after closing date
+
+**Pre-conditions**:
+- Internship with closing date in the past
+
+**Steps**:
+1. Create internship with closing date: `2025-01-01` (past date)
+2. Get it approved
+3. Login as student
+4. Try to apply
+
+**Expected Result**:
+- Error message: "This internship is not currently accepting applications."
+- No application created
+
+---
+
+### TC036: Input Validation - Invalid Date Format
+
+**Description**: Verify system handles invalid date input gracefully
+
+**Steps**:
+1. Login as company rep
+2. Select "1. Create Internship Opportunity"
+3. Enter all details correctly until date
+4. Enter opening date: `invalid-date`
+
+**Expected Result**:
+- Error message: "Invalid date format. Please use yyyy-MM-dd (e.g., 2025-11-01)"
+- Prompts to re-enter
+- System doesn't crash
+
+---
+
+### TC037: Input Validation - Invalid Number
+
+**Description**: Verify system handles non-numeric input
+
+**Steps**:
+1. Login as company rep
+2. Select "1. Create Internship Opportunity"
+3. Enter all details until slots
+4. Enter slots: `abc`
+
+**Expected Result**:
+- Error message: "Invalid number. Please enter a number between 1 and 10."
+- Prompts to re-enter
+- System doesn't crash
+
+---
+
+### TC038: Concurrent Application Limit
+
+**Description**: Verify application limit enforced correctly
+
+**Setup**:
+1. Student has 2 applications
+
+**Steps**:
+1. Apply for 3rd internship (should succeed)
+2. Try to apply for 4th internship
+
+**Expected Result**:
+- 3rd application succeeds
+- 4th application fails with message: "You have reached the maximum of 3 applications."
+
+---
+
+### TC039: Cannot Apply While Having Confirmed Placement
+
+**Description**: Verify student cannot apply after accepting placement
+
+**Pre-conditions**:
+- Student has accepted a placement
+
+**Steps**:
+1. Login as student with confirmed placement
+2. Select "2. Apply for Internship"
+3. Enter valid internship ID
+
+**Expected Result**:
+- Error message: "You have already confirmed an internship placement."
+- Cannot apply
+
+---
+
+### TC040: Company Rep Internship Limit
+
+**Description**: Verify company rep cannot exceed 5 internships
+
+**Pre-conditions**:
+- Company rep has created 5 internships
+
+**Steps**:
+1. Login as company rep
+2. Try to create 6th internship
+
+**Expected Result**:
+- Error message: "You have reached the maximum of 5 internship opportunities."
+- Cannot create more
+
+---
+
+## Test Execution Summary
+
+### Test Report Template
 
 ```
 Test Execution Report
 Date: __________
 Tester: __________
 
-Total Test Cases: 32
+Total Test Cases: 40
 Passed: ___
 Failed: ___
 Pass Rate: ___%
 
 Failed Test Cases:
 1. TC___ - Description - Reason
+2. TC___ - Description - Reason
 
 Known Issues:
 1. Issue description
@@ -700,13 +882,15 @@ Recommendations:
 2. Recommendation
 ```
 
+---
+
 ## Common Issues and Solutions
 
-### Issue 1: File Not Found
-**Solution**: Ensure data directory exists, create manually if needed
+### Issue 1: "File not found" error
+**Solution**: Ensure `data` directory exists, create manually if needed
 
 ### Issue 2: Serialization Error
-**Solution**: Delete all .dat files and restart
+**Solution**: Delete all `.dat` files in `data/` folder and restart
 
 ### Issue 3: Login Fails for New Company Rep
 **Solution**: Ensure staff has approved the account first
@@ -714,47 +898,104 @@ Recommendations:
 ### Issue 4: Cannot See Internships
 **Solution**: Check visibility is ON and status is APPROVED
 
+### Issue 5: Date Format Issues
+**Solution**: Use strict format: yyyy-MM-dd (e.g., 2025-11-01)
+
+---
+
 ## Automated Testing Suggestions
 
 For future enhancement, consider:
 1. JUnit tests for business logic
-2. Selenium for UI testing (if GUI added)
-3. Continuous integration setup
-4. Test coverage analysis
-
-## Demo Script
-
-Recommended flow for demonstration:
-
-1. **Setup Phase** (2 min)
-   - Show clean system
-   - Login as staff
-   - Show initial data
-
-2. **Company Rep Journey** (3 min)
-   - Register
-   - Get approved
-   - Create internship
-   - Wait for approval
-
-3. **Student Journey** (4 min)
-   - View internships
-   - Apply for internship
-   - View status
-   - Accept placement
-
-4. **Staff Operations** (3 min)
-   - Approve internships
-   - Process withdrawals
-   - Generate reports
-
-5. **Edge Cases** (2 min)
-   - Show application limit
-   - Show eligibility checks
-   - Show visibility toggle
-
-6. **Q&A** (1 min)
+2. Mockito for mocking dependencies
+3. Integration tests for workflows
+4. Continuous integration setup
+5. Test coverage analysis with JaCoCo
 
 ---
 
-**Total Time**: 15 minutes (matches requirement)
+## Demo Script
+
+Recommended flow for 15-minute demonstration:
+
+### **Minutes 0-2: Setup & Introduction**
+- Introduce team and project
+- Show system architecture
+- Explain MVC pattern
+
+### **Minutes 2-5: Career Staff Operations**
+- Authorize company representative
+- Approve internship opportunities
+- Show approval workflow
+
+### **Minutes 5-9: Company Rep Operations**
+- Login as company rep
+- Create internship
+- View applications
+- Process (approve) application
+- Toggle visibility
+
+### **Minutes 9-13: Student Operations**
+- Login as student
+- View filtered internships (show eligibility)
+- Apply for internship
+- View application status
+- Accept placement (show withdrawal of others)
+
+### **Minutes 13-14: Edge Cases**
+- Show application limit (3)
+- Show eligibility restrictions (Year 2 → Basic only)
+- Show filled internship status
+
+### **Minutes 14-15: Data Persistence & Q&A**
+- Exit and restart application
+- Show data retained
+- Answer questions
+
+---
+
+## Performance Testing
+
+### Load Testing Scenarios:
+
+1. **Many Users**: Test with 100+ users
+2. **Many Internships**: Test with 50+ internships
+3. **Many Applications**: Test with 200+ applications
+4. **Concurrent Operations**: Multiple users operating simultaneously
+
+### Expected Performance:
+- Login: < 1 second
+- View internships: < 2 seconds
+- Apply: < 1 second
+- Data load/save: < 3 seconds
+
+---
+
+## Security Testing
+
+### Test Cases:
+
+1. **SQL Injection** (N/A - no database)
+2. **Password Security**: Verify passwords not displayed
+3. **Access Control**: Verify role-based access
+4. **Data Validation**: Verify all inputs validated
+
+---
+
+## Final Checklist
+
+Before submission:
+- [ ] All 40 test cases executed
+- [ ] Test report completed
+- [ ] All critical bugs fixed
+- [ ] Data persistence verified
+- [ ] All user roles tested
+- [ ] Edge cases handled
+- [ ] Error messages user-friendly
+- [ ] Demo script practiced
+- [ ] Screenshots taken
+- [ ] Test data prepared
+
+---
+
+**Remember**: The goal is not just to pass tests, but to demonstrate a robust, well-designed system that handles both normal and edge cases gracefully! 🎯
