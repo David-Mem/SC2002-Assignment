@@ -7,9 +7,6 @@ import java.util.stream.Collectors;
 
 /**
  * Boundary class for student interface.
- * 
- * @author Group X
- * @version 1.0
  */
 public class StudentUI {
     
@@ -20,8 +17,6 @@ public class StudentUI {
     
     /**
      * Constructs a StudentUI for the specified student.
-     * 
-     * @param student Student user
      */
     public StudentUI(Student student) {
         this.student = student;
@@ -91,6 +86,7 @@ public class StudentUI {
         for (int i = 0; i < availableInternships.size(); i++) {
             Internship internship = availableInternships.get(i);
             System.out.println("\n" + (i + 1) + ". " + internship.getTitle());
+            System.out.println("   Internship ID: " + internship.getInternshipId());
             System.out.println("   Company: " + internship.getCompanyName());
             System.out.println("   Level: " + internship.getLevel());
             System.out.println("   Major: " + internship.getPreferredMajor());

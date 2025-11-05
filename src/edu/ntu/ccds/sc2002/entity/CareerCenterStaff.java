@@ -3,9 +3,6 @@ package edu.ntu.ccds.sc2002.entity;
 /**
  * Represents a career center staff user in the system.
  * Extends User class demonstrating inheritance.
- * 
- * @author Group X
- * @version 1.0
  */
 public class CareerCenterStaff extends User {
     private static final long serialVersionUID = 1L;
@@ -14,11 +11,6 @@ public class CareerCenterStaff extends User {
     
     /**
      * Constructs a CareerCenterStaff with specified details.
-     * 
-     * @param userId NTU account ID
-     * @param name Staff's name
-     * @param password Staff's password
-     * @param staffDepartment Department where staff works
      */
     public CareerCenterStaff(String userId, String name, String password, String staffDepartment) {
         super(userId, name, password, UserRole.CAREER_STAFF);
@@ -27,8 +19,6 @@ public class CareerCenterStaff extends User {
     
     /**
      * Gets the staff department.
-     * 
-     * @return Staff department
      */
     public String getStaffDepartment() {
         return staffDepartment;
@@ -36,8 +26,6 @@ public class CareerCenterStaff extends User {
     
     /**
      * Sets the staff department.
-     * 
-     * @param staffDepartment Staff department
      */
     public void setStaffDepartment(String staffDepartment) {
         this.staffDepartment = staffDepartment;

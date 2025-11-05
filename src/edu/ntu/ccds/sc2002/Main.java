@@ -7,9 +7,6 @@ import edu.ntu.ccds.sc2002.control.DataController;
 /**
  * Main entry point for the Internship Placement Management System.
  * Initializes the system and starts the login process.
- * 
- * @author Group X
- * @version 1.0
  */
 public class Main {
     
@@ -20,9 +17,25 @@ public class Main {
      * @param args Command line arguments (not used)
      */
     public static void main(String[] args) {
-        System.out.println("================================================");
-        System.out.println("  INTERNSHIP PLACEMENT MANAGEMENT SYSTEM");
-        System.out.println("================================================\n");
+         // ANSI color codes
+        String RESET = "\u001B[0m";
+        String CYAN = "\u001B[36m";
+        String BLUE = "\u001B[34m";
+        String BRIGHT_CYAN = "\u001B[96m";
+        String BOLD = "\u001B[1m";
+        
+        // 3D ASCII Art Title with colors
+        System.out.println(CYAN + BOLD);
+        System.out.println("  ╦╔╗╔╔╦╗╔═╗╦═╗╔╗╔╔═╗╦ ╦╦╔═╗  ╔═╗╦  ╔═╗╔═╗╔═╗╔╦╗╔═╗╔╗╔╔╦╗");
+        System.out.println("  ║║║║ ║ ║╣ ╠╦╝║║║╚═╗╠═╣║╠═╝  ╠═╝║  ╠═╣║  ║╣ ║║║║╣ ║║║ ║ ");
+        System.out.println("  ╩╝╚╝ ╩ ╚═╝╩╚═╝╚╝╚═╝╩ ╩╩╩    ╩  ╩═╝╩ ╩╚═╝╚═╝╩ ╩╚═╝╝╚╝ ╩ ");
+        System.out.println(BRIGHT_CYAN);
+        System.out.println("          ╔╦╗╔═╗╔╗╔╔═╗╔═╗╔═╗╔╦╗╔═╗╔╗╔╔╦╗  ╔═╗╦ ╦╔═╗╔╦╗╔═╗╔╦╗");
+        System.out.println("          ║║║╠═╣║║║╠═╣║ ╦║╣ ║║║║╣ ║║║ ║   ╚═╗╚╦╝╚═╗ ║ ║╣ ║║║");
+        System.out.println("          ╩ ╩╩ ╩╝╚╝╩ ╩╚═╝╚═╝╩ ╩╚═╝╝╚╝ ╩   ╚═╝ ╩ ╚═╝ ╩ ╚═╝╩ ╩");
+        System.out.println(RESET);
+        System.out.println(BLUE + "════════════════════════════════════════════════════════════════════" + RESET);
+        System.out.println();
         
         // Initialize data from files
         DataController dataController = DataController.getInstance();

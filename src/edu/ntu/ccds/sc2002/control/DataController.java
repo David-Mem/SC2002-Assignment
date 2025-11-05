@@ -8,9 +8,6 @@ import java.util.stream.Collectors;
 /**
  * Singleton controller class for managing all system data.
  * Demonstrates Singleton design pattern and centralized data management.
- * 
- * @author Group X
- * @version 1.0
  */
 public class DataController {
     
@@ -37,8 +34,6 @@ public class DataController {
     
     /**
      * Gets the singleton instance of DataController.
-     * 
-     * @return DataController instance
      */
     public static DataController getInstance() {
         if (instance == null) {
@@ -154,8 +149,6 @@ public class DataController {
     
     /**
      * Loads all data from files.
-     * 
-     * @throws IOException if file reading fails
      */
     public void loadAllData() throws IOException {
         // Try to load users from .dat file first, fall back to .txt if not found
@@ -172,8 +165,6 @@ public class DataController {
     
     /**
      * Saves all data to files.
-     * 
-     * @throws IOException if file writing fails
      */
     public void saveAllData() throws IOException {
         new File("data").mkdirs();
@@ -232,9 +223,6 @@ public class DataController {
 
     /**
      * Saves users to binary file for persistence.
-     * 
-     * @param filename Path to save file
-     * @throws IOException if file writing fails
      */
     private void saveUsersToFile(String filename) throws IOException {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
@@ -244,8 +232,6 @@ public class DataController {
 
     /**
      * Loads users from binary file.
-     * 
-     * @param filename Path to load file
      */
     @SuppressWarnings("unchecked")
     private void loadUsersFromDatFile(String filename) {

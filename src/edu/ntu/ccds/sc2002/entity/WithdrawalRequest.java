@@ -6,9 +6,6 @@ import java.time.LocalDateTime;
 /**
  * Represents a withdrawal request for an internship application.
  * Implements Serializable for data persistence.
- * 
- * @author Group X
- * @version 1.0
  */
 public class WithdrawalRequest implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -23,12 +20,6 @@ public class WithdrawalRequest implements Serializable {
     
     /**
      * Constructs a WithdrawalRequest with specified details.
-     * 
-     * @param requestId Unique request identifier
-     * @param applicationId Application being withdrawn
-     * @param studentId Student making the request
-     * @param reason Reason for withdrawal
-     * @param isAfterConfirmation Whether this is after placement confirmation
      */
     public WithdrawalRequest(String requestId, String applicationId, String studentId, 
                             String reason, boolean isAfterConfirmation) {

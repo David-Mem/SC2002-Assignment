@@ -8,9 +8,6 @@ import java.util.List;
 /**
  * Represents an internship opportunity in the system.
  * Implements Serializable for data persistence.
- * 
- * @author Group X
- * @version 1.0
  */
 public class Internship implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -33,17 +30,6 @@ public class Internship implements Serializable {
     
     /**
      * Constructs an Internship with specified details.
-     * 
-     * @param internshipId Unique internship identifier
-     * @param title Internship title
-     * @param description Internship description
-     * @param level Internship level (Basic, Intermediate, Advanced)
-     * @param preferredMajor Preferred student major
-     * @param openingDate Application opening date
-     * @param closingDate Application closing date
-     * @param companyName Company offering the internship
-     * @param companyRepId Company representative in charge
-     * @param totalSlots Total number of available slots (max 10)
      */
     public Internship(String internshipId, String title, String description, 
                      InternshipLevel level, String preferredMajor,
@@ -95,8 +81,6 @@ public class Internship implements Serializable {
     
     /**
      * Adds an application ID to this internship.
-     * 
-     * @param applicationId Application ID to add
      */
     public void addApplication(String applicationId) {
         if (!applicationIds.contains(applicationId)) {
@@ -106,8 +90,6 @@ public class Internship implements Serializable {
     
     /**
      * Removes an application ID from this internship.
-     * 
-     * @param applicationId Application ID to remove
      */
     public void removeApplication(String applicationId) {
         applicationIds.remove(applicationId);
@@ -115,9 +97,6 @@ public class Internship implements Serializable {
     
     /**
      * Confirms a student for this internship and decreases available slots.
-     * 
-     * @param studentId Student ID to confirm
-     * @return true if confirmed successfully, false if no slots available
      */
     public boolean confirmStudent(String studentId) {
         if (availableSlots > 0 && !confirmedStudentIds.contains(studentId)) {
@@ -133,9 +112,6 @@ public class Internship implements Serializable {
     
     /**
      * Removes a confirmed student and increases available slots.
-     * 
-     * @param studentId Student ID to remove
-     * @return true if removed successfully, false if student not found
      */
     public boolean removeConfirmedStudent(String studentId) {
         if (confirmedStudentIds.remove(studentId)) {
@@ -150,8 +126,6 @@ public class Internship implements Serializable {
     
     /**
      * Checks if internship is currently accepting applications.
-     * 
-     * @return true if accepting applications, false otherwise
      */
     public boolean isAcceptingApplications() {
         LocalDate today = LocalDate.now();
@@ -164,10 +138,6 @@ public class Internship implements Serializable {
     
     /**
      * Checks if a student is eligible to apply based on year and level.
-     * 
-     * @param yearOfStudy Student's year of study
-     * @param major Student's major
-     * @return true if eligible, false otherwise
      */
     public boolean isEligibleForStudent(int yearOfStudy, String major) {
         // Check major match
