@@ -91,6 +91,7 @@ public class StudentUI {
         for (int i = 0; i < availableInternships.size(); i++) {
             Internship internship = availableInternships.get(i);
             System.out.println("\n" + (i + 1) + ". " + internship.getTitle());
+            System.out.println("   Internship ID: " + internship.getInternshipId());
             System.out.println("   Company: " + internship.getCompanyName());
             System.out.println("   Level: " + internship.getLevel());
             System.out.println("   Major: " + internship.getPreferredMajor());
