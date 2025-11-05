@@ -8,9 +8,6 @@ import java.util.*;
 
 /**
  * Boundary class for company representative interface.
- * 
- * @author Group X
- * @version 1.0
  */
 public class CompanyRepUI {
     
@@ -22,8 +19,6 @@ public class CompanyRepUI {
     
     /**
      * Constructs a CompanyRepUI for the specified representative.
-     * 
-     * @param companyRep Company representative user
      */
     public CompanyRepUI(CompanyRepresentative companyRep) {
         this.companyRep = companyRep;

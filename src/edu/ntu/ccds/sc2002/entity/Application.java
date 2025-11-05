@@ -6,9 +6,6 @@ import java.time.LocalDateTime;
 /**
  * Represents a student's internship application.
  * Implements Serializable for data persistence.
- * 
- * @author Group X
- * @version 1.0
  */
 public class Application implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -22,10 +19,6 @@ public class Application implements Serializable {
     
     /**
      * Constructs an Application with specified details.
-     * 
-     * @param applicationId Unique application identifier
-     * @param studentId ID of the student applying
-     * @param internshipId ID of the internship being applied to
      */
     public Application(String applicationId, String studentId, String internshipId) {
         this.applicationId = applicationId;

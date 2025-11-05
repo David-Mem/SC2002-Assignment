@@ -7,9 +7,6 @@ import java.util.Scanner;
 /**
  * Boundary class for login interface.
  * Demonstrates the Boundary pattern in MVC architecture.
- * 
- * @author Group X
- * @version 1.0
  */
 public class LoginUI {
     
@@ -18,8 +15,6 @@ public class LoginUI {
     
     /**
      * Constructs a LoginUI with specified authentication controller.
-     * 
-     * @param authController Authentication controller for login operations
      */
     public LoginUI(AuthenticationController authController) {
         this.authController = authController;

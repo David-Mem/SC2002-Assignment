@@ -6,9 +6,6 @@ import java.util.List;
 /**
  * Represents a company representative user in the system.
  * Extends User class demonstrating inheritance.
- * 
- * @author Group X
- * @version 1.0
  */
 public class CompanyRepresentative extends User {
     private static final long serialVersionUID = 1L;
@@ -21,13 +18,6 @@ public class CompanyRepresentative extends User {
     
     /**
      * Constructs a CompanyRepresentative with specified details.
-     * 
-     * @param userId Company email address
-     * @param name Representative's name
-     * @param password Representative's password
-     * @param companyName Name of the company
-     * @param department Department within the company
-     * @param position Representative's position
      */
     public CompanyRepresentative(String userId, String name, String password, 
                                 String companyName, String department, String position) {
@@ -41,8 +31,6 @@ public class CompanyRepresentative extends User {
     
     /**
      * Gets the company name.
-     * 
-     * @return Company name
      */
     public String getCompanyName() {
         return companyName;
@@ -50,8 +38,6 @@ public class CompanyRepresentative extends User {
     
     /**
      * Sets the company name.
-     * 
-     * @param companyName Company name
      */
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
@@ -59,8 +45,6 @@ public class CompanyRepresentative extends User {
     
     /**
      * Gets the department.
-     * 
-     * @return Department name
      */
     public String getDepartment() {
         return department;
@@ -68,8 +52,6 @@ public class CompanyRepresentative extends User {
     
     /**
      * Sets the department.
-     * 
-     * @param department Department name
      */
     public void setDepartment(String department) {
         this.department = department;
@@ -77,8 +59,6 @@ public class CompanyRepresentative extends User {
     
     /**
      * Gets the position.
-     * 
-     * @return Position title
      */
     public String getPosition() {
         return position;
@@ -86,8 +66,6 @@ public class CompanyRepresentative extends User {
     
     /**
      * Sets the position.
-     * 
-     * @param position Position title
      */
     public void setPosition(String position) {
         this.position = position;
@@ -95,8 +73,6 @@ public class CompanyRepresentative extends User {
     
     /**
      * Checks if the representative is approved.
-     * 
-     * @return true if approved, false otherwise
      */
     public boolean isApproved() {
         return isApproved;
@@ -104,8 +80,6 @@ public class CompanyRepresentative extends User {
     
     /**
      * Sets the approval status.
-     * 
-     * @param approved Approval status
      */
     public void setApproved(boolean approved) {
         this.isApproved = approved;
@@ -113,8 +87,6 @@ public class CompanyRepresentative extends User {
     
     /**
      * Gets the list of internship IDs created by this representative.
-     * 
-     * @return List of internship IDs
      */
     public List<String> getInternshipIds() {
         return new ArrayList<>(internshipIds);
@@ -122,9 +94,6 @@ public class CompanyRepresentative extends User {
     
     /**
      * Adds an internship ID to the representative's list.
-     * 
-     * @param internshipId Internship ID to add
-     * @return true if added successfully, false if limit reached (max 5)
      */
     public boolean addInternship(String internshipId) {
         if (internshipIds.size() >= 5) {
@@ -139,9 +108,6 @@ public class CompanyRepresentative extends User {
     
     /**
      * Removes an internship ID from the representative's list.
-     * 
-     * @param internshipId Internship ID to remove
-     * @return true if removed successfully, false if not found
      */
     public boolean removeInternship(String internshipId) {
         return internshipIds.remove(internshipId);
@@ -149,8 +115,6 @@ public class CompanyRepresentative extends User {
     
     /**
      * Checks if representative has reached maximum internship creation limit.
-     * 
-     * @return true if representative has created 5 internships, false otherwise
      */
     public boolean hasReachedInternshipLimit() {
         return internshipIds.size() >= 5;

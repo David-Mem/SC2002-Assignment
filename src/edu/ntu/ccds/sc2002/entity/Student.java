@@ -6,9 +6,6 @@ import java.util.List;
 /**
  * Represents a student user in the system.
  * Extends User class demonstrating inheritance.
- * 
- * @author Group X
- * @version 1.0
  */
 public class Student extends User {
     private static final long serialVersionUID = 1L;
@@ -20,12 +17,6 @@ public class Student extends User {
     
     /**
      * Constructs a Student with specified details.
-     * 
-     * @param userId Student ID (format: UXXXXXXXY)
-     * @param name Student's name
-     * @param password Student's password
-     * @param yearOfStudy Year of study (1-4)
-     * @param major Student's major (e.g., CSC, EEE, MAE)
      */
     public Student(String userId, String name, String password, int yearOfStudy, String major) {
         super(userId, name, password, UserRole.STUDENT);
@@ -37,8 +28,6 @@ public class Student extends User {
     
     /**
      * Gets the student's year of study.
-     * 
-     * @return Year of study (1-4)
      */
     public int getYearOfStudy() {
         return yearOfStudy;
@@ -46,8 +35,6 @@ public class Student extends User {
     
     /**
      * Sets the student's year of study.
-     * 
-     * @param yearOfStudy Year of study (1-4)
      */
     public void setYearOfStudy(int yearOfStudy) {
         this.yearOfStudy = yearOfStudy;
@@ -55,8 +42,6 @@ public class Student extends User {
     
     /**
      * Gets the student's major.
-     * 
-     * @return Major code
      */
     public String getMajor() {
         return major;
@@ -64,8 +49,6 @@ public class Student extends User {
     
     /**
      * Sets the student's major.
-     * 
-     * @param major Major code
      */
     public void setMajor(String major) {
         this.major = major;
@@ -73,8 +56,6 @@ public class Student extends User {
     
     /**
      * Gets the list of application IDs.
-     * 
-     * @return List of application IDs
      */
     public List<String> getApplicationIds() {
         return new ArrayList<>(applicationIds);
@@ -82,9 +63,6 @@ public class Student extends User {
     
     /**
      * Adds an application ID to the student's applications.
-     * 
-     * @param applicationId Application ID to add
-     * @return true if added successfully, false if already exists or limit reached
      */
     public boolean addApplication(String applicationId) {
         if (applicationIds.size() >= 3) {
@@ -99,9 +77,6 @@ public class Student extends User {
     
     /**
      * Removes an application from the student's applications.
-     * 
-     * @param applicationId Application ID to remove
-     * @return true if removed successfully, false if not found
      */
     public boolean removeApplication(String applicationId) {
         return applicationIds.remove(applicationId);
@@ -109,8 +84,6 @@ public class Student extends User {
     
     /**
      * Checks if student has reached maximum application limit.
-     * 
-     * @return true if student has 3 applications, false otherwise
      */
     public boolean hasReachedApplicationLimit() {
         return applicationIds.size() >= 3;
@@ -118,8 +91,6 @@ public class Student extends User {
     
     /**
      * Gets the confirmed internship ID.
-     * 
-     * @return Confirmed internship ID or null if none
      */
     public String getConfirmedInternshipId() {
         return confirmedInternshipId;
@@ -127,8 +98,6 @@ public class Student extends User {
     
     /**
      * Sets the confirmed internship ID.
-     * 
-     * @param confirmedInternshipId Internship ID to confirm
      */
     public void setConfirmedInternshipId(String confirmedInternshipId) {
         this.confirmedInternshipId = confirmedInternshipId;
@@ -136,16 +105,11 @@ public class Student extends User {
     
     /**
      * Checks if student has a confirmed internship.
-     * 
-     * @return true if student has confirmed an internship, false otherwise
      */
     public boolean hasConfirmedInternship() {
         return confirmedInternshipId != null;
     }
     
-    /**
-     * Clears all applications (used when confirming an internship).
-     */
     public void clearApplications() {
         applicationIds.clear();
     }

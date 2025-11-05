@@ -6,9 +6,6 @@ import java.io.Serializable;
  * Abstract base class representing a user in the system.
  * Implements Serializable for data persistence.
  * Demonstrates encapsulation and abstraction OOP principles.
- * 
- * @author Group X
- * @version 1.0
  */
 public abstract class User implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -20,11 +17,6 @@ public abstract class User implements Serializable {
     
     /**
      * Constructs a User with specified details.
-     * 
-     * @param userId Unique identifier for the user
-     * @param name Full name of the user
-     * @param password User's password (default: "password")
-     * @param role User's role in the system
      */
     public User(String userId, String name, String password, UserRole role) {
         this.userId = userId;
@@ -35,8 +27,6 @@ public abstract class User implements Serializable {
     
     /**
      * Gets the user ID.
-     * 
-     * @return User ID
      */
     public String getUserId() {
         return userId;
@@ -44,8 +34,6 @@ public abstract class User implements Serializable {
     
     /**
      * Gets the user's name.
-     * 
-     * @return User's full name
      */
     public String getName() {
         return name;
@@ -53,8 +41,6 @@ public abstract class User implements Serializable {
     
     /**
      * Sets the user's name.
-     * 
-     * @param name New name for the user
      */
     public void setName(String name) {
         this.name = name;
@@ -62,8 +48,6 @@ public abstract class User implements Serializable {
     
     /**
      * Gets the user's password.
-     * 
-     * @return User's password
      */
     public String getPassword() {
         return password;
@@ -71,8 +55,6 @@ public abstract class User implements Serializable {
     
     /**
      * Changes the user's password.
-     * 
-     * @param newPassword New password to set
      */
     public void changePassword(String newPassword) {
         this.password = newPassword;
@@ -80,8 +62,6 @@ public abstract class User implements Serializable {
     
     /**
      * Gets the user's role.
-     * 
-     * @return User's role
      */
     public UserRole getRole() {
         return role;

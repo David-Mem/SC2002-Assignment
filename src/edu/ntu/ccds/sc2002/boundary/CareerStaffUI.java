@@ -7,9 +7,6 @@ import java.util.stream.Collectors;
 
 /**
  * Boundary class for career center staff interface.
- * 
- * @author Group X
- * @version 1.0
  */
 public class CareerStaffUI {
     
@@ -20,8 +17,6 @@ public class CareerStaffUI {
     
     /**
      * Constructs a CareerStaffUI for the specified staff member.
-     * 
-     * @param staff Career center staff user
      */
     public CareerStaffUI(CareerCenterStaff staff) {
         this.staff = staff;
