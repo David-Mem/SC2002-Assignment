@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"edu.ntu.ccds.sc2002"},{"l":"edu.ntu.ccds.sc2002.boundary"},{"l":"edu.ntu.ccds.sc2002.control"},{"l":"edu.ntu.ccds.sc2002.entity"}];updateSearchResults();

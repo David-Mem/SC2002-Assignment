@@ -39,7 +39,6 @@ target/
 .settings/
 
 # Generated documentation
-docs/
 
 # Serialized data files (optional - include if you don't want to track these)
 data/*.dat
