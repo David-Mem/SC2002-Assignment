@@ -34,6 +34,7 @@ public class DataController {
     
     /**
      * Gets the singleton instance of DataController.
+     * @return single instance of DataController
      */
     public static DataController getInstance() {
         if (instance == null) {
@@ -43,18 +44,35 @@ public class DataController {
     }
     
     // User Management
+    /**
+     * Adds the user.
+     * @param user the user
+     */
     public void addUser(User user) {
         users.put(user.getUserId(), user);
     }
     
+    /**
+     * Gets the user by id.
+     * @param userId the user id
+     * @return the user by id
+     */
     public User getUserById(String userId) {
         return users.get(userId);
     }
     
+    /**
+     * Gets the all users.
+     * @return the all users
+     */
     public List<User> getAllUsers() {
         return new ArrayList<>(users.values());
     }
     
+    /**
+     * Gets the all students.
+     * @return the all students
+     */
     public List<Student> getAllStudents() {
         return users.values().stream()
                    .filter(u -> u instanceof Student)
@@ -62,6 +80,10 @@ public class DataController {
                    .collect(Collectors.toList());
     }
     
+    /**
+     * Gets the all company reps.
+     * @return the all company reps
+     */
     public List<CompanyRepresentative> getAllCompanyReps() {
         return users.values().stream()
                    .filter(u -> u instanceof CompanyRepresentative)
@@ -69,6 +91,10 @@ public class DataController {
                    .collect(Collectors.toList());
     }
     
+    /**
+     * Gets the all career staff.
+     * @return the all career staff
+     */
     public List<CareerCenterStaff> getAllCareerStaff() {
         return users.values().stream()
                    .filter(u -> u instanceof CareerCenterStaff)
@@ -77,72 +103,143 @@ public class DataController {
     }
     
     // Internship Management
+    /**
+     * Adds the internship.
+     * @param internship the internship
+     */
     public void addInternship(Internship internship) {
         internships.put(internship.getInternshipId(), internship);
     }
     
+    /**
+     * Gets the internship by id.
+     * @param internshipId the internship id
+     * @return the internship by id
+     */
     public Internship getInternshipById(String internshipId) {
         return internships.get(internshipId);
     }
     
+    /**
+     * Gets the all internships.
+     * @return the all internships
+     */
     public List<Internship> getAllInternships() {
         return new ArrayList<>(internships.values());
     }
     
+    /**
+     * Removes the internship.
+     * @param internshipId the internship id
+     * @return true, if successful
+     */
     public boolean removeInternship(String internshipId) {
         return internships.remove(internshipId) != null;
     }
     
+    /**
+     * Generate internship id.
+     * @return the string
+     */
     public String generateInternshipId() {
         return "INT" + String.format("%04d", nextInternshipId++);
     }
     
     // Application Management
+    /**
+     * Adds the application.
+     * @param application the application
+     */
     public void addApplication(Application application) {
         applications.put(application.getApplicationId(), application);
     }
     
+    /**
+     * Gets the application by id.
+     * @param applicationId the application id
+     * @return the application by id
+     */
     public Application getApplicationById(String applicationId) {
         return applications.get(applicationId);
     }
     
+    /**
+     * Gets the all applications.
+     * @return the all applications
+     */
     public List<Application> getAllApplications() {
         return new ArrayList<>(applications.values());
     }
     
+    /**
+     * Gets the applications by student id.
+     * @param studentId the student id
+     * @return the applications by student id
+     */
     public List<Application> getApplicationsByStudentId(String studentId) {
         return applications.values().stream()
                           .filter(a -> a.getStudentId().equals(studentId))
                           .collect(Collectors.toList());
     }
     
+    /**
+     * Gets the applications by internship id.
+     * @param internshipId the internship id
+     * @return the applications by internship id
+     */
     public List<Application> getApplicationsByInternshipId(String internshipId) {
         return applications.values().stream()
                           .filter(a -> a.getInternshipId().equals(internshipId))
                           .collect(Collectors.toList());
     }
     
+    /**
+     * Removes the application.
+     * @param applicationId the application id
+     * @return true, if successful
+     */
     public boolean removeApplication(String applicationId) {
         return applications.remove(applicationId) != null;
     }
     
+    /**
+     * Generate application id.
+     * @return the string
+     */
     public String generateApplicationId() {
         return "APP" + String.format("%04d", nextApplicationId++);
     }
     
     // Withdrawal Request Management
+    /**
+     * Adds the withdrawal request.
+     * @param request the request
+     */
     public void addWithdrawalRequest(WithdrawalRequest request) {
         withdrawalRequests.put(request.getRequestId(), request);
     }
     
+    /**
+     * Gets the withdrawal request by id.
+     * @param requestId the request id
+     * @return the withdrawal request by id
+     */
     public WithdrawalRequest getWithdrawalRequestById(String requestId) {
         return withdrawalRequests.get(requestId);
     }
     
+    /**
+     * Gets the all withdrawal requests.
+     * @return the all withdrawal requests
+     */
     public List<WithdrawalRequest> getAllWithdrawalRequests() {
         return new ArrayList<>(withdrawalRequests.values());
     }
     
+    /**
+     * Generate withdrawal request id.
+     * @return the string
+     */
     public String generateWithdrawalRequestId() {
         return "WDR" + String.format("%04d", nextWithdrawalId++);
     }

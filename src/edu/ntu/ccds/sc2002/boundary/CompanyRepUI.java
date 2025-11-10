@@ -19,6 +19,7 @@ public class CompanyRepUI {
     
     /**
      * Constructs a CompanyRepUI for the specified representative.
+     * @param companyRep the company rep
      */
     public CompanyRepUI(CompanyRepresentative companyRep) {
         this.companyRep = companyRep;

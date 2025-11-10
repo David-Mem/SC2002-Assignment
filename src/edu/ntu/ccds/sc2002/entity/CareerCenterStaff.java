@@ -19,6 +19,7 @@ public class CareerCenterStaff extends User {
     
     /**
      * Gets the staff department.
+     * @return the staff department
      */
     public String getStaffDepartment() {
         return staffDepartment;
@@ -26,6 +27,7 @@ public class CareerCenterStaff extends User {
     
     /**
      * Sets the staff department.
+     * @param staffDepartment the new staff department
      */
     public void setStaffDepartment(String staffDepartment) {
         this.staffDepartment = staffDepartment;

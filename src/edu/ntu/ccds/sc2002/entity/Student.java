@@ -110,6 +110,9 @@ public class Student extends User {
         return confirmedInternshipId != null;
     }
     
+    /**
+     * Clears all internship applications for the student.
+     */
     public void clearApplications() {
         applicationIds.clear();
     }

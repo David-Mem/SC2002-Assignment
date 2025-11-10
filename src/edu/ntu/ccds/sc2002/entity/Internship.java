@@ -53,30 +53,122 @@ public class Internship implements Serializable {
     }
     
     // Getters
+    /**
+     * Gets the internship ID.
+     * @return the internship ID
+     */
     public String getInternshipId() { return internshipId; }
+    /**
+     * Gets the title.
+     * @return the title
+     */
     public String getTitle() { return title; }
+    /**
+     * Gets the description.
+     * @return the description
+     */
     public String getDescription() { return description; }
+    /**
+     * Gets the level.
+     * @return the level
+     */
     public InternshipLevel getLevel() { return level; }
+    /**
+     * Gets the preferred major.
+     * @return the preferred major
+     */
     public String getPreferredMajor() { return preferredMajor; }
+    /**
+     * Gets the opening date.
+     * @return the opening date
+     */
     public LocalDate getOpeningDate() { return openingDate; }
+    /**
+     * Gets the closing date.
+     * @return the closing date
+     */
     public LocalDate getClosingDate() { return closingDate; }
+    /**
+     * Gets the status.
+     * @return the status
+     */
     public InternshipStatus getStatus() { return status; }
+    /**
+     * Gets the company name.
+     * @return the company name
+     */
     public String getCompanyName() { return companyName; }
+    /**
+     * Gets the company rep ID.
+     * @return the company rep ID
+     */
     public String getCompanyRepId() { return companyRepId; }
+    /**
+     * Gets the total slots.
+     * @return the total slots
+     */
     public int getTotalSlots() { return totalSlots; }
+    /**
+     * Gets the available slots.
+     * @return the available slots
+     */
     public int getAvailableSlots() { return availableSlots; }
+    /**
+     * Checks if is visible.
+     * @return true, if is visible
+     */
     public boolean isVisible() { return isVisible; }
+    /**
+     * Gets the application ids.
+     * @return the application ids
+     */
     public List<String> getApplicationIds() { return new ArrayList<>(applicationIds); }
+    /**
+     * Gets the confirmed student ids.
+     * @return the confirmed student ids
+     */
     public List<String> getConfirmedStudentIds() { return new ArrayList<>(confirmedStudentIds); }
     
     // Setters
+    /**
+     * Sets the title.
+     * @param title the new title
+     */
     public void setTitle(String title) { this.title = title; }
+    /**
+     * Sets the description.
+     * @param description the new description
+     */
     public void setDescription(String description) { this.description = description; }
+    /**
+     * Sets the level.
+     * @param level the new level
+     */
     public void setLevel(InternshipLevel level) { this.level = level; }
+    /**
+     * Sets the preferred major.
+     * @param preferredMajor the new preferred major
+     */
     public void setPreferredMajor(String preferredMajor) { this.preferredMajor = preferredMajor; }
+    /**
+     * Sets the opening date.
+     * @param openingDate the new opening date
+     */
     public void setOpeningDate(LocalDate openingDate) { this.openingDate = openingDate; }
+    /**
+     * Sets the closing date.
+     * @param closingDate the new closing date
+     */
     public void setClosingDate(LocalDate closingDate) { this.closingDate = closingDate; }
+    /**
+     * Sets the status.
+     * @param status the new status
+     */
     public void setStatus(InternshipStatus status) { this.status = status; }
+    /**
+     * Sets the visible.
+     * @param visible the new visible
+     */
     public void setVisible(boolean visible) { this.isVisible = visible; }
     
     /**

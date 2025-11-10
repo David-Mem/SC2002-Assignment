@@ -17,6 +17,7 @@ public class CareerStaffUI {
     
     /**
      * Constructs a CareerStaffUI for the specified staff member.
+     * @param staff the staff
      */
     public CareerStaffUI(CareerCenterStaff staff) {
         this.staff = staff;

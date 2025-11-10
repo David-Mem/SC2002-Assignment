@@ -15,6 +15,7 @@ public class LoginUI {
     
     /**
      * Constructs a LoginUI with specified authentication controller.
+     * @param authController the auth controller
      */
     public LoginUI(AuthenticationController authController) {
         this.authController = authController;

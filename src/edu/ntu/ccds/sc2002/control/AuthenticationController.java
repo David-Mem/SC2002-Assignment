@@ -19,6 +19,9 @@ public class AuthenticationController {
     
     /**
      * Authenticates a user with given credentials.
+     * @param userId the user id
+     * @param password the password
+     * @return the user
      */
     public User login(String userId, String password) {
         User user = dataController.getUserById(userId);
@@ -46,6 +49,13 @@ public class AuthenticationController {
     
     /**
      * Registers a new company representative.
+     * @param email the email
+     * @param name the name
+     * @param password the password
+     * @param companyName the company name
+     * @param department the department
+     * @param position the position
+     * @return true, if successful
      */
     public boolean registerCompanyRepresentative(String email, String name, String password,
                                                 String companyName, String department, String position) {
@@ -61,6 +71,10 @@ public class AuthenticationController {
     
     /**
      * Changes a user's password.
+     * @param user the user
+     * @param oldPassword the old password
+     * @param newPassword the new password
+     * @return true, if successful
      */
     public boolean changePassword(User user, String oldPassword, String newPassword) {
         if (user.getPassword().equals(oldPassword)) {
@@ -72,6 +86,8 @@ public class AuthenticationController {
     
     /**
      * Validates user ID format based on role.
+     * @param userId the user id
+     * @return true, if successful
      */
     public boolean validateUserIdFormat(String userId) {
         if (userId == null || userId.isEmpty()) {

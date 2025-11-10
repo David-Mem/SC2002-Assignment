@@ -31,6 +31,7 @@ public class CompanyRepresentative extends User {
     
     /**
      * Gets the company name.
+     * @return the company name
      */
     public String getCompanyName() {
         return companyName;
@@ -38,6 +39,7 @@ public class CompanyRepresentative extends User {
     
     /**
      * Sets the company name.
+     * @param companyName the new company name
      */
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
@@ -45,6 +47,7 @@ public class CompanyRepresentative extends User {
     
     /**
      * Gets the department.
+     * @return the department
      */
     public String getDepartment() {
         return department;
@@ -52,6 +55,7 @@ public class CompanyRepresentative extends User {
     
     /**
      * Sets the department.
+     * @param department the new department
      */
     public void setDepartment(String department) {
         this.department = department;
@@ -59,6 +63,7 @@ public class CompanyRepresentative extends User {
     
     /**
      * Gets the position.
+     * @return the position
      */
     public String getPosition() {
         return position;
@@ -66,6 +71,7 @@ public class CompanyRepresentative extends User {
     
     /**
      * Sets the position.
+     * @param position the new position
      */
     public void setPosition(String position) {
         this.position = position;
@@ -73,6 +79,7 @@ public class CompanyRepresentative extends User {
     
     /**
      * Checks if the representative is approved.
+     * @return true, if is approved
      */
     public boolean isApproved() {
         return isApproved;
@@ -80,6 +87,7 @@ public class CompanyRepresentative extends User {
     
     /**
      * Sets the approval status.
+     * @param approved the new approved
      */
     public void setApproved(boolean approved) {
         this.isApproved = approved;
@@ -87,6 +95,7 @@ public class CompanyRepresentative extends User {
     
     /**
      * Gets the list of internship IDs created by this representative.
+     * @return the internship ids
      */
     public List<String> getInternshipIds() {
         return new ArrayList<>(internshipIds);
@@ -94,6 +103,8 @@ public class CompanyRepresentative extends User {
     
     /**
      * Adds an internship ID to the representative's list.
+     * @param internshipId the internship id
+     * @return true, if successful
      */
     public boolean addInternship(String internshipId) {
         if (internshipIds.size() >= 5) {
@@ -108,6 +119,8 @@ public class CompanyRepresentative extends User {
     
     /**
      * Removes an internship ID from the representative's list.
+     * @param internshipId the internship id
+     * @return true, if successful
      */
     public boolean removeInternship(String internshipId) {
         return internshipIds.remove(internshipId);

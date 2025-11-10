@@ -17,6 +17,7 @@ public class StudentUI {
     
     /**
      * Constructs a StudentUI for the specified student.
+     * @param student the student
      */
     public StudentUI(Student student) {
         this.student = student;

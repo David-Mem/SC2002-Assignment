@@ -30,15 +30,47 @@ public class Application implements Serializable {
     }
     
     // Getters
+    /**
+     * Gets the application id.
+     * @return the application id
+     */
     public String getApplicationId() { return applicationId; }
+    /**
+     * Gets the student id.
+     * @return the student id
+     */
     public String getStudentId() { return studentId; }
+    /**
+     * Gets the internship id.
+     * @return the internship id
+     */
     public String getInternshipId() { return internshipId; }
+    /**
+     * Gets the status.
+     * @return the status
+     */
     public ApplicationStatus getStatus() { return status; }
+    /**
+     * Gets the application date.
+     * @return the application date
+     */
     public LocalDateTime getApplicationDate() { return applicationDate; }
+    /**
+     * Checks if is placement confirmed.
+     * @return true, if is placement confirmed
+     */
     public boolean isPlacementConfirmed() { return placementConfirmed; }
     
     // Setters
+    /**
+     * Sets the status.
+     * @param status the new status
+     */
     public void setStatus(ApplicationStatus status) { this.status = status; }
+    /**
+     * Sets the placement confirmed.
+     * @param confirmed the new placement confirmed
+     */
     public void setPlacementConfirmed(boolean confirmed) { this.placementConfirmed = confirmed; }
     
     @Override
