@@ -59,54 +59,58 @@ chmod +x compile.sh run.sh
 ## Additional Features
 - ✅ Data Persistence: File based storage
 - ✅ Email/ID/Account validation with regex
+- ✅ Statistical report feature for the Career Center Staff
 ---
 
 ## Project Structure
 ```
-InternshipSystem/
-├── src/
-│   └── edu/ntu/ccds/sc2002/
-│       ├── Main.java                          # Application entry point
-│       ├── entity/                            # Entity classes (Model)
-│       │   ├── User.java                      # Abstract base user class
-│       │   ├── UserRole.java                  # User role enumeration
-│       │   ├── Student.java                   # Student entity
-│       │   ├── CompanyRepresentative.java     # Company rep entity
-│       │   ├── CareerCenterStaff.java         # Career staff entity
-│       │   ├── Internship.java                # Internship entity
-│       │   ├── InternshipLevel.java           # Internship level enum
-│       │   ├── InternshipStatus.java          # Internship status enum
-│       │   ├── Application.java               # Application entity
-│       │   ├── ApplicationStatus.java         # Application status enum
-│       │   ├── WithdrawalRequest.java         # Withdrawal request entity
-│       │   └── WithdrawalStatus.java          # Withdrawal status enum
-│       ├── control/                           # Controller classes
-│       │   ├── AuthenticationController.java  # Authentication logic
-│       │   └── DataController.java            # Data management (Singleton)
-│       └── boundary/                          # Boundary/UI classes (View)
-│           ├── LoginUI.java                   # Login interface
-│           ├── StudentUI.java                 # Student interface
-│           ├── CompanyRepUI.java              # Company rep interface
-│           └── CareerStaffUI.java             # Career staff interface
-│
+SC2002-Assignment/
+├── .gitatributes
+├── .gitignore
+├── .gitkeep
+├── compile.bat
+├── compile.sh
+├── DESIGN_CONSIDERATIONS.md
+├── PROJECT_SUMMARY.md
+├── QUICK_START_GUIDE.md
+├── README.md
+├── run.bat
+├── run.sh
+├── testcases.md
 ├── data/
-│   ├── users.txt                              # Initial user data
-│   ├── .gitkeep                               # Ensures directory is tracked
-│   └── *.dat                                  # Serialized data (generated)
-│
+│   ├── .gitkeep
+│   └── users.txt
+├── docs/
+│   └── (generated javadoc)
 ├── scripts/
-│   └── setup.sh                               # Setup script
-│
-├── compile.sh / compile.bat                   # Compilation scripts
-├── run.sh / run.bat                           # Execution scripts
-├── .gitignore                                 # Git ignore rules
-├── .gitattributes                             # Line ending configuration
-│
-├── README.md                                  # This file
-├── QUICK_START_GUIDE.md                       # 5-minute setup guide
-├── DESIGN_CONSIDERATIONS.md                   # Design documentation
-├── TESTING_GUIDE.md                           # Test cases and guide
-└── (other documentation files)
+│   └── setup.sh
+└── src/
+    └── edu/
+        └── ntu/
+            └── ccds/
+                └── sc2002/
+                    ├── Main.java
+                    ├── boundary/
+                    │   ├── CareerStaffUI.java
+                    │   ├── CompanyRepUI.java
+                    │   ├── LoginUI.java
+                    │   └── StudentUI.java
+                    ├── control/
+                    │   ├── AuthenticationController.java
+                    │   └── DataController.java
+                    └── entity/
+                        ├── Application.java
+                        ├── ApplicationStatus.java
+                        ├── CareerCenterStaff.java
+                        ├── CompanyRepresentative.java
+                        ├── Internship.java
+                        ├── InternshipLevel.java
+                        ├── InternshipStatus.java
+                        ├── Student.java
+                        ├── User.java
+                        ├── UserRole.java
+                        ├── WithdrawalRequest.java
+                        └── WithdrawalStatus.java
 ```
 
 ---
