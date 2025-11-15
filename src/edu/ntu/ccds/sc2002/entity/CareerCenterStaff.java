@@ -39,10 +39,11 @@ public class CareerCenterStaff extends User {
         System.out.println("1. Authorize Company Representatives");
         System.out.println("2. Approve/Reject Internship Opportunities");
         System.out.println("3. Process Withdrawal Requests");
-        System.out.println("4. Generate Reports");
-        System.out.println("5. View All Internships");
-        System.out.println("6. Change Password");
-        System.out.println("7. Logout");
+        System.out.println("4. Generate Statistical Report");
+        System.out.println("5. Generate Reports");
+        System.out.println("6. View All Internships");
+        System.out.println("7. Change Password");
+        System.out.println("8. Logout");
     }
     
     @Override

@@ -48,15 +48,18 @@ public class CareerStaffUI {
                     processWithdrawalRequests();
                     break;
                 case "4":
-                    generateReports();
+                    generateStatisticalReport();
                     break;
                 case "5":
-                    viewAllInternships();
+                    generateReports();
                     break;
                 case "6":
-                    changePassword();
+                    viewAllInternships();
                     break;
                 case "7":
+                    changePassword();
+                    break;
+                case "8":
                     System.out.println("Logging out...");
                     running = false;
                     break;
@@ -64,6 +67,14 @@ public class CareerStaffUI {
                     System.out.println("Invalid choice. Please try again.");
             }
         }
+    }
+    
+    /**
+     * Generates and displays a statistical report.
+     */
+    private void generateStatisticalReport() {
+        String report = dataController.generateStatisticsReport();
+        System.out.println(report);
     }
     
     /**

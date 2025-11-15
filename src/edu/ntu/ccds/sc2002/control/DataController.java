@@ -245,6 +245,44 @@ public class DataController {
     }
     
     /**
+     * Generates a statistical report of the system data.
+     * @return A formatted string containing the report.
+     */
+    public String generateStatisticsReport() {
+        StringBuilder report = new StringBuilder();
+        report.append("\n=== System Statistics Report ===\n");
+
+        // 1. Internship statistics by status
+        long approvedInternships = internships.values().stream().filter(i -> i.getStatus() == InternshipStatus.APPROVED).count();
+        long pendingInternships = internships.values().stream().filter(i -> i.getStatus() == InternshipStatus.PENDING).count();
+        long filledInternships = internships.values().stream().filter(i -> i.getStatus() == InternshipStatus.FILLED).count();
+        report.append("\n--- Internship Status ---\n");
+        report.append("Total Open Internships (Approved): ").append(approvedInternships).append("\n");
+        report.append("Total Pending Internships: ").append(pendingInternships).append("\n");
+        report.append("Total Filled Internships: ").append(filledInternships).append("\n");
+
+        // 2. Total submitted applications
+        report.append("\n--- Application Status ---\n");
+        report.append("Total Submitted Applications: ").append(applications.size()).append("\n");
+
+        // 3. Internships per company
+        report.append("\n--- Internships by Company ---\n");
+        Map<String, Long> internshipsByCompany = internships.values().stream()
+                .collect(Collectors.groupingBy(Internship::getCompanyName, Collectors.counting()));
+
+        if (internshipsByCompany.isEmpty()) {
+            report.append("No internships posted by any company.\n");
+        } else {
+            internshipsByCompany.entrySet().stream()
+                    .sorted(Map.Entry.<String, Long>comparingByValue().reversed())
+                    .forEach(entry -> report.append(String.format("%-20s: %d\n", entry.getKey(), entry.getValue())));
+        }
+
+        report.append("\n=== End of Report ===\n");
+        return report.toString();
+    }
+    
+    /**
      * Loads all data from files.
      */
     public void loadAllData() throws IOException {
