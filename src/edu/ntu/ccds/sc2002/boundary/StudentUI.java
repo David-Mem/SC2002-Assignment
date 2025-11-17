@@ -145,10 +145,9 @@ public class StudentUI {
         // Create application
         String appId = dataController.generateApplicationId();
         Application application = new Application(appId, student.getUserId(), internshipId);
-        dataController.addApplication(application);
-        
-        student.addApplication(appId);
-        internship.addApplication(appId);
+
+        // Controller handles the transaction
+        dataController.processNewApplication(application);
         
         System.out.println("\nApplication submitted successfully!");
         System.out.println("Application ID: " + appId);
