@@ -153,6 +153,22 @@ public class DataController {
     public void addApplication(Application application) {
         applications.put(application.getApplicationId(), application);
     }
+
+    /**
+     * Processes a new application by adding it to the system and updating related entities.
+     * @param application the application to process
+     */
+    public void processNewApplication(Application application) {
+        addApplication(application);
+        Student student = (Student) getUserById(application.getStudentId());
+        if (student != null) {
+            student.addApplication(application.getApplicationId());
+        }
+        Internship internship = getInternshipById(application.getInternshipId());
+        if (internship != null) {
+            internship.addApplication(application.getApplicationId());
+        }
+    }
     
     /**
      * Gets the application by id.
